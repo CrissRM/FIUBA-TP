@@ -2,27 +2,39 @@ from validadores.validar_longitud_palabra import validar_longitud_palabra
 from validadores.validar_palabra import validar_palabra
 from validadores.analizar_palabra import analizar_palabra
 from initialSetting.obtener_color import obtener_color
-import time
 from helpers.alternador_turnos import alternador_turnos
+import time
 
-
-def app(tablero,palabra_lista,contador_credito,es_ganador,jugador_1,jugador_2,turno):
+    
+def app(dicc):
+  print("\x1b[33m*****************************************************************\x1b[0m")
+  print("\x1b[33m**************************JUEGO INICIADO*************************\x1b[0m")
+  
+  tablero = dicc["tablero"]
+  palabra_secret = dicc["palabra_secret"]
+  contador_credito = dicc["contador_credito"]
+  es_ganador = dicc["es_ganador"]
+  jugador_1 = dicc["jugador_1"]
+  jugador_2 = dicc["jugador_2"]
+  turno = dicc["turno"]
   
   while (not es_ganador) and (contador_credito< 5):
     
     turno= alternador_turnos(turno)
-    print(f"Turno de ----> {jugador_1}") if turno == 1 else print(f"Turno de ----> {jugador_2}")
+    print(f"\n\nTurno de ----> {jugador_1}") if turno == 1 else print(f"\n\nTurno de ----> {jugador_2}")
+    
     parcial_ganador = False
     palabra = validar_longitud_palabra()
     
-    if validar_palabra(palabra,palabra_lista):
+    if validar_palabra(palabra,palabra_secret):
+      turno= alternador_turnos(turno)
       parcial_ganador = jugador_1 if turno == 1 else jugador_2
       es_ganador=True 
       tablero[contador_credito] = [obtener_color( letra,"Verde" ) for letra in palabra]
       finaliza_juego = time.time()
     
     else:
-      lista_2 = analizar_palabra(palabra,palabra_lista)
+      lista_2 = analizar_palabra(palabra,palabra_secret)
       tablero[contador_credito]=lista_2 
     
     if not es_ganador:
@@ -34,6 +46,11 @@ def app(tablero,palabra_lista,contador_credito,es_ganador,jugador_1,jugador_2,tu
     for i in range(5): 
       print(" ".join(tablero[i]))  
 
-  return [es_ganador,palabra_lista,finaliza_juego,contador_credito,parcial_ganador,turno]
+  return {
+    "finaliza_juego": finaliza_juego,
+    "contador_credito": contador_credito,
+    "parcial_ganador": parcial_ganador,
+    "turno": turno
+  }
 
   

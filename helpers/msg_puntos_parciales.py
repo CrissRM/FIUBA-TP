@@ -1,24 +1,21 @@
 def mensage(jugador_1,jugador_2,puntos_1,puntos_2,puntos_jugador_1,puntos_jugador_2):
 
   print("\n\x1b[33m*****************************PUNTAJES****************************\x1b[0m")
-  print(f"\n          {jugador_1} obtuvo ----> {puntos_1} puntos")
+  print(f"\n\x1b[33m                    {'       JUGADOR      ':7} | {'PUNTOS':6} | {'ACOMULADO':9} |\x1b[0m")
+  
     
   if puntos_jugador_1<0:
-    print(f"          \x1b[31mPuntos acomulados:  {puntos_jugador_1}\x1b[0m\n") 
+    print(f"\n                    {jugador_1:20} | {puntos_1:6} | \x1b[31m{puntos_jugador_1:9}\x1b[0m |")
   else:
-    print(f"          \x1b[32mPuntos acomulados:  {puntos_jugador_1}\x1b[0m\n")
-
-  print(f"          {jugador_2} obtuvo ----> {puntos_2} puntos")
+    print(f"\n                    {jugador_1:20} | {puntos_1:6} | \x1b[32m{puntos_jugador_1:9}\x1b[0m |")
     
   if puntos_jugador_2<0:
-    print(f"          \x1b[31mPuntos acomulados:  {puntos_jugador_2}\x1b[0m") 
+    print(f"\n                    {jugador_2:20} | {puntos_2:6} | \x1b[31m{puntos_jugador_2:9}\x1b[0m |")
   else:
-    print(f"          \x1b[32mPuntos acomulados:  {puntos_jugador_2}\x1b[0m")
+    print(f"\n                    {jugador_2:20} | {puntos_2:6} | \x1b[32m{puntos_jugador_2:9}\x1b[0m |")
 
 def msg_puntos_parciales(jugador_1,jugador_2,puntos,parcial_ganador,turno,tiempo,puntos_jugador_1,puntos_jugador_2):
-# rojo: \x1b[31m
-# verde: \x1b[32m
-# \x1b[0m
+
   if not parcial_ganador:
     puntos_1 = puntos
     puntos_2 = puntos + 50

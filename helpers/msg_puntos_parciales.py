@@ -13,6 +13,10 @@ def mensage(jugador_1,jugador_2,puntos_1,puntos_2,puntos_jugador_1,puntos_jugado
     print(f"\n                    {jugador_2:20} | {puntos_2:6} | \x1b[31m{puntos_jugador_2:9}\x1b[0m |")
   else:
     print(f"\n                    {jugador_2:20} | {puntos_2:6} | \x1b[32m{puntos_jugador_2:9}\x1b[0m |")
+    
+    """
+    muestra de puntos 
+    """
 
 def msg_puntos_parciales(jugador_1,jugador_2,puntos,parcial_ganador,turno,tiempo,puntos_jugador_1,puntos_jugador_2):
 
@@ -36,4 +40,8 @@ def msg_puntos_parciales(jugador_1,jugador_2,puntos,parcial_ganador,turno,tiempo
     puntos_2 = -puntos 
     mensage(jugador_1,jugador_2,puntos_1,puntos_2,puntos_jugador_1,puntos_jugador_2)
 
+    """
+    El programa verifica que cantidad de puntos corresponde a cada jugador y carga los datos
+    correspondientes
+    """
 

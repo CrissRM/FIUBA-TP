@@ -1,4 +1,4 @@
-from validadores.validar_longitud_palabra import validar_longitud_palabra 
+from validadores.validar_condicion_palabra import validar_condicion_palabra 
 from validadores.validar_palabra import validar_palabra
 from validadores.analizar_palabra import analizar_palabra
 from initialSetting.obtener_color import obtener_color
@@ -24,7 +24,7 @@ def app(dicc):
     print(f"\n\nTurno de ----> {jugador_1}") if turno == 1 else print(f"\n\nTurno de ----> {jugador_2}")
     
     parcial_ganador = False
-    palabra = validar_longitud_palabra()
+    palabra = validar_condicion_palabra()
     
     if validar_palabra(palabra,palabra_secret):
       turno= alternador_turnos(turno)

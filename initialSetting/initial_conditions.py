@@ -8,4 +8,4 @@ def num_random():
 def palabra_secreta():
   palabra_secre = obtener_palabras_validas()
   palabra_secreta=palabra_secre[num_random()]
-  return palabra_secreta
+  return palabra_secreta.upper()

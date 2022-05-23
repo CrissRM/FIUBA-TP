@@ -18,6 +18,7 @@ def app(datos_iniciales):
   jugadores = list(datos_iniciales["jugadores"].keys())
   turno = datos_iniciales["turno"]
   CREDITO_MAX = datos_iniciales["contador_credito_max"]
+  CANTIDAD_LETRAS = datos_iniciales["cantidad_letras"]
   
   print(palabra_secret)
   while (not es_ganador) and (contador_credito< CREDITO_MAX):
@@ -43,10 +44,10 @@ def app(datos_iniciales):
     if not es_ganador:
       contador_credito+=1
     
-    if contador_credito>=5:
+    if contador_credito>=CREDITO_MAX:
       finaliza_juego = time.time()
     
-    for i in range(5): 
+    for i in range(CANTIDAD_LETRAS): 
       print(" ".join(tablero[i]))  
 
   return {

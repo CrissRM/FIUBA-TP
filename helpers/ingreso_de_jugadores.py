@@ -27,6 +27,10 @@ def ingreso_de_jugadores():
       print("\x1b[31m>>>> ALERTA!!! Solo se aceptan caracteres alfabeticos...\x1b[0m")
       jugador = input("Por favor, ingrese un nombre valido: ")
     
+    while jugador in lista_jugadores:
+      print("\n\x1b[31m>>> ALERTA Debe ingresar un nombre diferente al anterior\x1b[0m")
+      jugador = input("Por favor, ingrese otro nombre: ")
+    
     lista_jugadores.append(jugador.capitalize())
   return lista_jugadores
 

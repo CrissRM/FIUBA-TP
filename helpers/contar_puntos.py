@@ -2,17 +2,10 @@ def contar_puntos(contador_credito):
   """
   La funcion de esta parte del codigo,es determinar la cantidad de puntos correspondientes
   a la cantidad de intentos realizados.
-  
-  >>> contar_puntos(1) 
-  40
-  >>> contar_puntos(0) 
-  50
-  >>> contar_puntos(7) 
-  -100
-  >>> contar_puntos(10) 
-  -100
+
   """
-  if contador_credito==0:
+  
+  if contador_credito == 0:
     puntos=50
   elif contador_credito==1:
     puntos =40
@@ -28,5 +21,5 @@ def contar_puntos(contador_credito):
 
 
 
-import doctest
-doctest.testmod()
+# import doctest
+# doctest.testmod()

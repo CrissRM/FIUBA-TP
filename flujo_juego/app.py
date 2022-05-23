@@ -1,35 +1,38 @@
 from validadores.validar_condicion_palabra import validar_condicion_palabra 
 from validadores.validar_palabra import validar_palabra
 from validadores.analizar_palabra import analizar_palabra
-from initialSetting.obtener_color import obtener_color
+from initialSetting.datos_iniciales import obtener_color
 from helpers.alternador_turnos import alternador_turnos
+from helpers.mensaje_turno_de import mensaje_turno_de
 import time
 
     
-def app(dicc):
+def app(datos_iniciales):
   print("\x1b[33m*****************************************************************\x1b[0m")
   print("\x1b[33m**************************JUEGO INICIADO*************************\x1b[0m")
   
-  tablero = dicc["tablero"]
-  palabra_secret = dicc["palabra_secret"]
-  contador_credito = dicc["contador_credito"]
-  es_ganador = dicc["es_ganador"]
-  jugador_1 = dicc["jugador_1"]
-  jugador_2 = dicc["jugador_2"]
-  turno = dicc["turno"]
+  tablero = datos_iniciales["tablero"]
+  palabra_secret = datos_iniciales["palabra_secret"]
+  contador_credito = datos_iniciales["contador_credito"]
+  es_ganador = datos_iniciales["es_ganador"]
+  jugadores = list(datos_iniciales["jugadores"].keys())
+  turno = datos_iniciales["turno"]
+  CREDITO_MAX = datos_iniciales["contador_credito_max"]
   
-  while (not es_ganador) and (contador_credito< 5):
+  print(palabra_secret)
+  while (not es_ganador) and (contador_credito< CREDITO_MAX):
     
-    turno= alternador_turnos(turno)
-    print(f"\n\nTurno de ----> {jugador_1}") if turno == 1 else print(f"\n\nTurno de ----> {jugador_2}")
+    turno= alternador_turnos(turno,jugadores)
+    mensaje_turno_de(turno)
     
-    parcial_ganador = False
+    ganador_parcial = False
+    
     palabra = validar_condicion_palabra()
     
     if validar_palabra(palabra,palabra_secret):
-      turno= alternador_turnos(turno)
-      parcial_ganador = jugador_1 if turno == 1 else jugador_2
       es_ganador=True 
+      ganador_parcial = turno
+      # turno= alternador_turnos(turno,jugadores)
       tablero[contador_credito] = [obtener_color( letra,"Verde" ) for letra in palabra]
       finaliza_juego = time.time()
     
@@ -49,8 +52,13 @@ def app(dicc):
   return {
     "finaliza_juego": finaliza_juego,
     "contador_credito": contador_credito,
-    "parcial_ganador": parcial_ganador,
-    "turno": turno
+    "ganador_parcial": ganador_parcial,
+    "turno": turno,
+    "cambiar_turno": alternador_turnos(turno,jugadores)
   }
+
+  
+  
+  
 
   

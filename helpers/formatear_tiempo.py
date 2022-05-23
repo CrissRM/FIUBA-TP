@@ -1,5 +1,5 @@
 import math
-def formatear_tiempo(inicia,finaliza):
+def formatear_tiempo(ronda_terminada): 
   """
   Esta funcion es la encargada de contar el tiempo que conlleva desde el inicio al fin del juego.
 
@@ -10,7 +10,9 @@ def formatear_tiempo(inicia,finaliza):
   '86 horas 45 minutos 12 segundos'
   
   """
-  time = math.floor(finaliza-inicia)
+  inicia_juego = ronda_terminada["inicia_juego"]
+  finaliza_juego = ronda_terminada["finaliza_juego"]
+  time = math.floor(finaliza_juego-inicia_juego)
   horas=math.floor(time/3600)
   minutos= math.floor((time-horas*3600)/60)
   segundos= math.floor((((time-horas*3600)/60)-minutos)*60)

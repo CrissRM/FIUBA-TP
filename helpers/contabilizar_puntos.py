@@ -1,4 +1,4 @@
-def contabilizar_puntos(puntos,parcial_ganador,turno,puntos_jugador_1,puntos_jugador_2,jugador_1):
+def contabilizar_puntos(puntos,ganador_parcial,turno,dicc_jugadores):
   """
   La funcion se encarga de analizar el reusltado del juego,y asignar sus valores,dependiendo
   del resultad y devolver los puntos acumulados en la jugada
@@ -8,22 +8,24 @@ def contabilizar_puntos(puntos,parcial_ganador,turno,puntos_jugador_1,puntos_jug
   correspondientes puntos del jugador 1 y 2,respectivamente
 
   """
-  if not parcial_ganador:
-    if turno ==1:
-      puntos_jugador_1+=puntos+50
-      puntos_jugador_2+=puntos
-    else:
-      puntos_jugador_1+=puntos
-      puntos_jugador_2+=puntos+50
+  if not ganador_parcial:
+    
+    for key in dicc_jugadores:
+      if key == turno:
+        dicc_jugadores[key] += puntos 
+      else:
+        dicc_jugadores[key] += puntos+50
   
-  elif parcial_ganador == jugador_1:
-    puntos_jugador_1+=-puntos
-    puntos_jugador_2+=puntos
   else:
-    puntos_jugador_1+=puntos
-    puntos_jugador_2+=-puntos
-  
-  return puntos_jugador_1,puntos_jugador_2
+    
+    for key in dicc_jugadores:
+      if key == turno:
+        dicc_jugadores[key] += puntos
+      else:
+        dicc_jugadores[key] += -puntos
 
-import doctest
-doctest.testmod()
+  
+  return dicc_jugadores
+
+# import doctest
+# doctest.testmod()

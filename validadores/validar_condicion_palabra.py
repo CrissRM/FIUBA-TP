@@ -1,15 +1,17 @@
 from helpers.formatear_palabra import formatear_palabra
-
+from initialSetting.datos_iniciales import condiciones_iniciales
 
 def validar_condicion_palabra():
   """
   Esta funcion es la encragrada de cumplir con la validacion de las condiciones para que la palabra
   sea valida,luego que termina con la validacion ,la devuelve en mayusculas
   """
+  MAX_LETRAS = condiciones_iniciales()["cantidad_letras"]
+  
   palabra=input("Arriesgo :")
-  while len(palabra)!=5 or (not palabra.isalpha()):
-    if len(palabra)!=5 :
-        print(f"la palabra debe tener 5 letras y tiene {len(palabra)}")
+  while len(palabra)!=MAX_LETRAS or (not palabra.isalpha()):
+    if len(palabra)!=MAX_LETRAS:
+        print(f"la palabra debe tener {MAX_LETRAS} letras y tiene {len(palabra)}")
     elif not palabra.isalpha() :
         print(f"La palabra debe contener solo letras")
     palabra=input("Arriesgo :") 
@@ -17,5 +19,5 @@ def validar_condicion_palabra():
   """
   Aqui nos devuelve la palabra sin acentos,ver funcion especifica
   """
-  return palabra.upper()
+  return palabra.lower()
   

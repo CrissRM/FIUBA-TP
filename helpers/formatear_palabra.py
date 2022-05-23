@@ -1,6 +1,4 @@
 import doctest
-
-
 letras = {
   "á": "a",
   "é": "e",

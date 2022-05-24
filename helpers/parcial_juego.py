@@ -2,6 +2,10 @@ from helpers.contar_puntos import contar_puntos
 from helpers.msg_puntos_parciales import msg_puntos_parciales
 
 def parcial_juego(ronda_terminada,dicc_jugadores,puntos):
+  """
+  Una vez finalziada la partida,pregunta a los jugadores si quieren seguir jugando
+  
+  """
   
   msg_puntos_parciales(puntos,ronda_terminada,dicc_jugadores)
   

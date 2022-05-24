@@ -7,12 +7,6 @@ lista_cantidad = condiciones_iniciales()["cantidad_jugadores"]
 MAXIMO = len(lista_cantidad)
 
 def ingreso_de_jugadores():
-  """
-Esta funcion es la encargada de alertar al usuario en caso de que no cumplan las condiciones necesarias
-para empezar a jugar
-recibe por la terminar los nombres de los jugadores ,los valida y los guarda en una lista para luego 
-utilzarla en el programa
-"""
   os.system("cls")
   print("\n\n\x1b[33m********************* REGISTRO DE JUGADORES *********************\x1b[0m")
   print("\n\n\x1b[33m*****************************************************************\x1b[0m")
@@ -44,7 +38,3 @@ utilzarla en el programa
     lista_jugadores.append(jugador)
   return lista_jugadores
 
-"""
-Esta funcion es la encargada de alertar al usuario en caso de que no cumplan las condiciones necesarias
-para empezar a jugar
-"""

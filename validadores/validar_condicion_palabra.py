@@ -5,7 +5,6 @@ def validar_condicion_palabra():
   """
   Esta funcion es la encragrada de cumplir con la validacion de las condiciones para que la palabra
   sea valida,luego que termina con la validacion ,la devuelve en mayusculas
-  Recibe por terminal la palabra,la verfifica y devuelve la misma en minusculas
   """
   MAX_LETRAS = condiciones_iniciales()["cantidad_letras"]
   
@@ -20,5 +19,5 @@ def validar_condicion_palabra():
   """
   Aqui nos devuelve la palabra sin acentos,ver funcion especifica
   """
-  return palabra.upper()
+  return palabra.lower()
   

@@ -1,6 +1,12 @@
 from helpers.formatear_tiempo import formatear_tiempo
 
 def mensaje_para_usurio(dicc_jugadores,puntos_ronda,ronda_terminada):
+  """
+  Recibe por parametro diccionario con los jugadores y sus respectivos puntos como valores,los puntos
+  que se obtuvieron en la ronda y cuando la ronda finaliza en forma de su respectivo tiempo que 
+  conllevo la ronda
+  Mostrara por pantalla los datos obtenidos de la ronda
+  """
   
   print("\n\x1b[33m*****************************PUNTAJES****************************\x1b[0m")
   
@@ -34,4 +40,5 @@ def mensaje_para_usurio(dicc_jugadores,puntos_ronda,ronda_terminada):
           print(f"\n                    {jugador:20} | {puntos_ronda:6} | \x1b[32m{puntos:9}\x1b[0m |")
         else:
           print(f"\n                    {jugador:20} | {puntos_ronda+50:6} | \x1b[31m{puntos:9}\x1b[0m |")
+
 

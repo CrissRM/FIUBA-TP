@@ -8,6 +8,14 @@ import time
 
     
 def app(datos_iniciales):
+  """"
+  Hasta aqui ,la app se encarga de tomar lo datos con sus diferentes funciones ya carcterizadas,
+  para comenzar con el juego,
+  Hasta esta parte ,el programa se encrag de analizar si la palabra ingresada es la misma 
+  que la que el programa elije de manera aleatoria,donde en el caso de que no sea valida,
+  alterna con los jugadores  y utiliza un credito para seguir con el proximo jugador.
+  
+  """
   print("\x1b[33m*****************************************************************\x1b[0m")
   print("\x1b[33m**************************JUEGO INICIADO*************************\x1b[0m")
   
@@ -19,7 +27,8 @@ def app(datos_iniciales):
   turno = datos_iniciales["turno"]
   CREDITO_MAX = datos_iniciales["contador_credito_max"]
   CANTIDAD_LETRAS = datos_iniciales["cantidad_letras"]
-  
+ 
+
   print(palabra_secret)
   while (not es_ganador) and (contador_credito< CREDITO_MAX):
     
@@ -39,7 +48,7 @@ def app(datos_iniciales):
     
     else:
       lista_2 = analizar_palabra(palabra,palabra_secret)
-      tablero[contador_credito]=lista_2 
+      tablero[contador_credito]=lista_2
     
     if not es_ganador:
       contador_credito+=1
@@ -58,8 +67,3 @@ def app(datos_iniciales):
     "cambiar_turno": alternador_turnos(turno,jugadores)
   }
 
-  
-  
-  
-
-  

@@ -2,8 +2,6 @@ from initialSetting.datos_iniciales import obtener_color
 
 def analizar_palabra(palabra,palabra_lista):
   """
-  La funcion se encarga de leer letra por letra la palabra,y en su respectivo caso
-  lo pinta del color correspondiente
   """
   lista_2=[]
   for i in range(len(palabra)):

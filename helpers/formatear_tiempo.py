@@ -1,14 +1,6 @@
 import math
 def formatear_tiempo(ronda_terminada): 
-  """
-  Esta funcion es la encargada de contar el tiempo que conlleva desde el inicio al fin del juego.
-
-  >>> formatear_tiempo(0,2100)
-  '35 minutos 0 segundos'
-
-  >>> formatear_tiempo(0,312312)
-  '86 horas 45 minutos 12 segundos'
-  
+  """ 
   """
   inicia_juego = ronda_terminada["inicia_juego"]
   finaliza_juego = ronda_terminada["finaliza_juego"]

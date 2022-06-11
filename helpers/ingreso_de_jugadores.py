@@ -26,7 +26,7 @@ def ingreso_de_jugadores():
   for i in range(cantidad_jugadores):
     jugador = input(f"\nPor favor, ingrese el nombre del {i+1}° jugador: ")
     check,jugador = formatear_nombre(jugador)
-    while not (check):
+    while not check:
       print("\n\x1b[31m>>>> ALERTA!!! Solo se aceptan caracteres alfabeticos...\x1b[0m")
       jugador = input("Por favor, ingrese un nombre valido: ")
       check,jugador = formatear_nombre(jugador)

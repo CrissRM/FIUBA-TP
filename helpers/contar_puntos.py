@@ -1,8 +1,5 @@
 def contar_puntos(contador_credito):
   """
-  La funcion de esta parte del codigo,es determinar la cantidad de puntos correspondientes
-  a la cantidad de intentos realizados.
-
   """
   
   if contador_credito == 0:
@@ -18,8 +15,3 @@ def contar_puntos(contador_credito):
   else:
     puntos = -100
   return puntos
-
-
-
-# import doctest
-# doctest.testmod()

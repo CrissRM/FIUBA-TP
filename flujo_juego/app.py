@@ -19,8 +19,8 @@ def app(datos_iniciales):
   turno = datos_iniciales["turno"]
   CREDITO_MAX = datos_iniciales["contador_credito_max"]
   CANTIDAD_LETRAS = datos_iniciales["cantidad_letras"]
-  
   print(palabra_secret)
+  
   while (not es_ganador) and (contador_credito< CREDITO_MAX):
     
     turno= alternador_turnos(turno,jugadores)
@@ -33,7 +33,6 @@ def app(datos_iniciales):
     if validar_palabra(palabra,palabra_secret):
       es_ganador=True 
       ganador_parcial = turno
-      # turno= alternador_turnos(turno,jugadores)
       tablero[contador_credito] = [obtener_color( letra,"Verde" ) for letra in palabra]
       finaliza_juego = time.time()
     

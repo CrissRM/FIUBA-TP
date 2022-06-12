@@ -8,3 +8,7 @@ def msg_error(msg):
 
 def msg_info(msg):
   mb.showinfo("Info",msg)
+
+def msg_confirm(msg):
+  return mb.askyesno("Preguntar",msg)
+  

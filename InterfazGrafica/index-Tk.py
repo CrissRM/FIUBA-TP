@@ -10,7 +10,7 @@ from componentes.Frame import Frame
 from componentes.Entry import Entry
 from app.app_consola import inicia_app
 from estilos_formatos import estilos,style_label,style_button,style_entry
-
+from funcionalidadButtonTk.actions_button import volver
 
 def btn_registrarse(not_argument):
   form_registro = formulario_registro(root,registro,ingresar)
@@ -32,9 +32,9 @@ def handler_cant(not_argument):
     if cant <= 0:
       msg_warning("No es un valor, válido")
     elif cant<=2:
-      jugadores = dict()
-      cant_jugadores.pack_forget()
-      form_ingreso = formulario_ingreso(root,registro,ingresar,jugadores,inicia_app)
+      jugadores = []
+      cant_jugadores.pack_forget() 
+      form_ingreso = formulario_ingreso(root,registro,ingresar,jugadores,cant,inicia_app)
       form_ingreso.pack()
     else:
       msg_info("Por el momento, el juego está implementado para un máximo de 2 jugadores")
@@ -49,23 +49,23 @@ root.configure(background=estilos["BACKGROUND_PRIMARY"])
 Label(style_label(root,"FIUBELE-SERPIENTE",5,5,"Releway",25,"roman",25,"center",estilos["BACKGROUND_PRIMARY"],estilos["FOREGROUND_PRIMARY"],"top",10,10))
 #-------------------------------------------------------------------------------
 
-
-#---------------------------FRAME CANTIDAD JUGADORES---------------------------
-cant_jugadores = FrameHidden(root)
-
-# style_entry(parent,padx,pady,font_family,font_size,font_slant,background,foreground,justify,show,side,mgx,mgy,is_password)
-cant_entry = Entry(style_entry(cant_jugadores,10,10,"Releway",13,"normal","#fff","#000","left","?",3,"left",10,0,False))
-
-Button(style_button(cant_jugadores,"CONFIRMAR",3,3,"Releway",8,"normal",10,"normal",handler_cant,False,"register","left",10,10))
-#-------------------------------------------------------------------------------
-
-
 #------------------------------------BOTONES------------------------------------
 botones = Frame(root)
 
 registro = Button(style_button(botones,"REGISTRARSE",5,5,"Releway",10,"normal",10,"normal",btn_registrarse,False,"register","left",10,10))
 
 ingresar = Button(style_button(botones,"INGRESAR",5,5,"Releway",10,"normal",10,"normal",btn_ingresar,False,"signin","left",10,10))
+#-------------------------------------------------------------------------------
+
+
+#---------------------------FRAME CANTIDAD JUGADORES---------------------------
+cant_jugadores = FrameHidden(root)
+
+cant_entry = Entry(style_entry(cant_jugadores,0,1,"Releway",19,"normal","#fff","#000","left","?",3,"left",5,10,False))
+
+Button(style_button(cant_jugadores,"CONFIRMAR",0,1.5,"Releway",13,"normal",10,"normal",handler_cant,False,"register","left",5,10))
+
+Button(style_button(cant_jugadores,"VOLVER",0,1.5,"Releway",13,"normal",10,"normal",volver,[cant_jugadores,registro,ingresar],"back","left",5,10))
 #-------------------------------------------------------------------------------
 root.mainloop()
 

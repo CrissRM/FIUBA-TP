@@ -19,7 +19,8 @@ def Entry(estilos):
       font=(estilos["font_family"],estilos["font_size"],estilos["font_slant"]),
       width=estilos["width"],
       background=estilos["background"],
-      foreground=estilos["foreground"]
+      foreground=estilos["foreground"],
+      
     )
     
   Entry.pack(side=estilos["side"],padx=estilos["mgx"],pady=estilos["mgy"])

@@ -1,13 +1,14 @@
-from validadores.validar_nombre import validar_nombre
-from validadores.validar_contrasenia import validar_contrasenia
-from validadores.existe_usuario import existe_usuario
-from componentes.MsgBox import msg_warning,msg_error
+from validadoresTk.validar_nombre import validar_nombre
+from validadoresTk.validar_contrasenia import validar_contrasenia
+from validadoresTk.existe_usuario import existe_usuario
+from componentes.MsgBox import msg_warning,msg_error,msg_info
 from componentes.Label import Label
 from componentes.Entry import Entry
 from componentes.Frame import Frame
-from componentes.FrameForm import FrameForm
+from componentes.FrameHidden import FrameHidden
 from componentes.Button import Button
 from utils.grabar_datos import grabar_datos
+from estilos_formatos import estilos,style_label,style_button,style_entry
 
 def volver(argumentos):
   form,btn_registro,btn_ingreso = argumentos
@@ -34,75 +35,43 @@ def enviar(argumentos):
         msg_warning("El usuario ya existe")
       else:
         grabar_datos(nombre,password)
+        msg_info("Usuario registrado con éxito")
+        nombre_entry.delete(0,"END")
+        clave_entry.delete(0,"END")
+        clave_entry_repeat.delete(0,"END")
         
 
     
 
 
 def formulario_registro(root,btn_registro,btn_ingreso):
-  form_registro = FrameForm(root)
+  form_registro = FrameHidden(root)
   
+  #-----------------------------------------------------------------------------
   data_nombre = Frame(form_registro)
+  style = style_label(data_nombre,"Nombre: ",5,5,"Releway",12,"roman",15,"w",estilos["BACKGROUND_PRIMARY"],estilos["FOREGROUND_PRIMARY"],"left",10,10)
+  Label(style)
 
-  style_label = {
-    "root": data_nombre,
-    "text": "Nombre: ",
-    "padding_x": 5,
-    "padding_y":5,
-    "margin_x": 10,
-    "margin_y": 10,
-    "font_family": "Raleway",
-    "font_size": 12,
-    "font_slant": "roman",
-    "side": "left",
-    "width":15,
-    "anchor": "w"
-  }
-
-  Label(style_label)
-  nombre_entry = Entry(data_nombre)
-  
+  nombre_entry = Entry(style_entry(data_nombre,0,0,"Releway",15,"normal","#fff","#000","left","?",15,"left",10,10,False))
+  #-----------------------------------------------------------------------------
   data_clave = Frame(form_registro)
-  
-  style_label["root"] =data_clave
-  style_label["text"] = "Contraseña: "
-  Label(style_label)
-  clave_entry = Entry(data_clave,True)
-
-  
+  style = style_label(data_clave,"Contraseña: ",5,5,"Releway",12,"roman",15,"w",estilos["BACKGROUND_PRIMARY"],estilos["FOREGROUND_PRIMARY"],"left",10,10)
+  Label(style)
+  clave_entry = Entry(style_entry(data_clave,0,0,"Releway",15,"normal","#fff","#000","left","?",15,"left",10,10,True))
+  #-----------------------------------------------------------------------------
   data_clave_repeat =Frame(form_registro)
-
-  style_label["root"] = data_clave_repeat
-  style_label["text"] = "Repetir Contraseña: "
-  Label(style_label)
-  
-  clave_entry_repeat = Entry(data_clave_repeat,True)
+  style = style_label(data_clave_repeat,"Repetir Contraseña: ",5,5,"Releway",12,"roman",15,"w",estilos["BACKGROUND_PRIMARY"],estilos["FOREGROUND_PRIMARY"],"left",10,10)
+  Label(style)
+  clave_entry_repeat = Entry(style_entry(data_clave_repeat,0,0,"Releway",15,"normal","#fff","#000","left","?",15,"left",10,10,True))
+  #-----------------------------------------------------------------------------
   
 # --------------------------BOTONES OPCIONES--------------------------
   botones = Frame(form_registro)
   
-  style_btn = {
-    "root": botones,
-    "text": "VOLVER",
-    "padding_x": 5,
-    "padding_y":5,
-    "margin_x": 10,
-    "margin_y": 10,
-    "button_style": "back",
-    "font_family": "Raleway",
-    "font_size": 10,
-    "font_slant": "roman",
-    "side": "left",
-    "state": "normal",
-    "command": lambda: volver([form_registro,btn_ingreso,btn_registro])
-  }
+  style = style_button(botones,"VOLVER",5,5,"Releway",10,"normal",10,"normal",volver,[form_registro,btn_ingreso,btn_registro],"back","left",10,10)
+  Button(style)
   
-  Button(style_btn)
-  
-  style_btn["text"]="ENVIAR"
-  style_btn["command"]=lambda: enviar([nombre_entry,clave_entry,clave_entry_repeat])
-  style_btn["button_style"] = "send"
-  
-  Button(style_btn)
+  style = style_button(botones,"ENVIAR",5,5,"Releway",10,"normal",10,"normal",enviar,[nombre_entry,clave_entry,clave_entry_repeat],"send","left",10,10)
+  Button(style)
   
   return form_registro

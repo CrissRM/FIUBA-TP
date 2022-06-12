@@ -1,23 +1,28 @@
 import tkinter as tk
-from tkinter import font
 from utils.estilos_formatos import estilos
 
-def Entry(padre,is_password = False):
-  if is_password:
+def Entry(estilos):
+  if estilos["is_password"]:
     Entry = tk.Entry(
-      padre,
-      justify="left",
-      font=(estilos["FONT_FAMILY"],estilos["FONT_SIZE_TEXT"]),
-      show="*",
+      estilos["root"],
+      justify=estilos["justify"],
+      font=(estilos["font_family"],estilos["font_size"],estilos["font_slant"]),
+      width=estilos["width"],
+      background=estilos["background"],
+      foreground=estilos["foreground"],
+      show=estilos["show"]
     )
   else:
     Entry =tk.Entry(
-      padre,
-      justify="left",
-      font=(estilos["FONT_FAMILY"],estilos["FONT_SIZE_TEXT"])
+      estilos["root"],
+      justify=estilos["justify"],
+      font=(estilos["font_family"],estilos["font_size"],estilos["font_slant"]),
+      width=estilos["width"],
+      background=estilos["background"],
+      foreground=estilos["foreground"]
     )
     
-  Entry.pack(side="left")
+  Entry.pack(side=estilos["side"],padx=estilos["mgx"],pady=estilos["mgy"])
   
   return Entry
 

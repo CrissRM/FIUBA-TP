@@ -1,7 +1,7 @@
 import tkinter as tk
 from utils.estilos_formatos import estilos
 
-def FrameForm(padre):
+def FrameHidden(padre):
   Formulario = tk.Frame(
   padre,
   padx=10,

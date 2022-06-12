@@ -29,3 +29,59 @@ def button_style(style):
     estilo = ("#002f68","#ffffff","#002653")
   return estilo
 
+def style_label(parent,text,padx,pady,font_family,font_size,font_slant,width,anchor,background,foreground,side,mgx,mgy):
+  return  {
+    "root": parent,
+    "text": text,
+    "padding_x": padx,
+    "padding_y":pady,
+    "font_family": font_family,
+    "font_size": font_size,
+    "font_slant": font_slant,
+    "width":width,
+    "anchor": anchor,
+    "background": background,
+    "foreground":foreground,
+    "side": side,
+    "margin_x": mgx,
+    "margin_y": mgy,
+  }
+
+def style_button(parent,text,padx,pady,font_family,font_size,font_slant,width,state,command,arg,button_style,side,mgx,mgy):
+  return {
+    "root": parent,
+    "text": text,
+    "padding_x": padx,
+    "padding_y":pady,
+    "font_family": font_family,
+    "font_size": font_size,
+    "font_slant": font_slant,
+    "width": width,
+    "state": state,
+    "command": lambda: command(arg),
+    "button_style": button_style,
+    "side": side,
+    "margin_x": mgx,
+    "margin_y": mgy,
+  }
+
+def style_entry(parent,padx,pady,font_family,font_size,font_slant,background,foreground,justify,show,width,side,mgx,mgy,is_password):
+  return {
+    "root": parent,
+    "padding_x": padx,
+    "padding_y": pady,
+    "font_family": font_family,
+    "font_size": font_size,
+    "font_slant": font_slant,
+    "background": background,
+    "foreground": foreground,
+    "justify": justify,
+    "show": show,
+    "width": width,
+    "side": side,
+    "mgx": mgx,
+    "mgy": mgy,
+    "is_password": is_password
+  }
+
+

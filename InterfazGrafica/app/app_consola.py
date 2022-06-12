@@ -10,7 +10,7 @@ def inicia_app():
   fin_juego(estadisticas_finales)
   
   
-inicia_app() 
+# inicia_app() 
 
 
   
